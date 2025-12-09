@@ -11,17 +11,17 @@ count how many times the value reaches 0 and return that count
 
 dir = []
 numbers = []
-with open ("input.txt") as f:
+with open ("day1/day1_input.txt") as f:
     for line in f:
-        if "R" in line or "L" in line:
-            dir.append(line[0])
-            numbers.append(int(line[1:].strip()))
+        dir.append(line[0])
+        numbers.append(int(line[1:]))
 
 
 val = 50
 res = 0
 
-for i in range(len(dir)):
+i = 0
+while i < len(dir):
     if dir[i] == "L":
         val -= numbers[i]
         if val < 0:
@@ -29,8 +29,9 @@ for i in range(len(dir)):
     else:
         val = (val + numbers[i]) % 100
 
-    
     if val == 0:
         res += 1
+
+    i += 1
 
 print(res)
